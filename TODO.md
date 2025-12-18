@@ -10,7 +10,7 @@
 - [x] Crear `requirements.txt` con dependencias gratuitas
 - [x] Crear archivo `.env` para variables de entorno
 - [x] Crear `.gitignore` (ignorar `.env`, `/output`, `/logs`, `__pycache__`)
-- [ ] Inicializar repositorio Git
+- [x] Inicializar repositorio Git
 
 ## 📦 Instalación de Dependencias
 - [ ] Crear entorno virtual: `python3 -m venv venv`
