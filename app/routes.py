@@ -36,6 +36,8 @@ def process_message(message, from_number):
     """
     Process the incoming message and generate a response
     """
+    logger.info(f"Processing message: '{message}' from {from_number}")
+
     # Get or create user session
     if from_number not in user_sessions:
         user_sessions[from_number] = {
@@ -44,15 +46,20 @@ def process_message(message, from_number):
         }
 
     session = user_sessions[from_number]
+    logger.info(f"Session state: {session['state']}")
 
     # Main conversation flow
     if session['state'] == 'initial':
-        if message in ['hola', 'hello', 'hi']:
+        logger.info("In initial state")
+        if message in ['hola', 'hello', 'hi', 'start']:
+            logger.info("Matched greeting")
             return "¡Hola! Soy tu asistente para generar convenios legales. Envía 'convenio' para comenzar."
         elif message == 'convenio':
+            logger.info("Matched convenio")
             session['state'] = 'select_type'
             return get_convenio_menu()
         else:
+            logger.info("No match, returning help message")
             return "Envía 'convenio' para comenzar a generar un documento legal."
 
     elif session['state'] == 'select_type':
